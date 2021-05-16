@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include "histogram.h"
 using namespace std;
 void svg_begin(double width, double height)
 {
@@ -75,23 +75,6 @@ const vector<double> input_numbers(size_t count) {
         cin >> result[i];
     }
     return result;
-}
-
-void find_minmax(const vector<double>& numbers, double& max, double& min) {
-    if (numbers.size()) {
-        max = numbers[0];
-        min = numbers[0];
-        if (numbers.size()) {
-            for (double x : numbers) {
-                if (x > max) {
-                    max = x;
-                }
-                if (x < min) {
-                    min = x;
-                }
-            }
-        }
-    }
 }
 
 const vector<size_t> make_histogram(const vector<double>& numbers, size_t& bin_count) {
