@@ -1,6 +1,6 @@
 #include <cassert>
 #include <iostream>
-#include "histogram.h"
+#include "C:\Users\79022\Desktop\lab03\LABA03\cs-lab03\histogram.h"
 
 using namespace std;
 
