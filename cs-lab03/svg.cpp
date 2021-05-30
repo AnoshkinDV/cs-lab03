@@ -22,13 +22,31 @@ void svg_end()
 
 
 void svg_rect(double x, double y, double width, double height, string stroke, string fill) {
-    cout << "<rect x= '" << x << "' y= '" << y << "' width= '" << width << "' height= '" << height << "' stroke= '" << stroke << "' fill= '" << fill << "' />";
+    cout << "<rect x= '" << x << "' y= '" << y << "' width= '" << width << "' height= '" << height << "' stroke= '" << stroke << "' fill= '" << fill << "' />\n";
 }
 void svg_text(double left, double baseline, string text)
 {
-    cout << "<text x='" << left << "' y='" << baseline << "'>" << text << "</text>";
+    cout << "<text x='" << left << "' y='" << baseline << "'>" << text << "</text>\n";
 }
 
+// int x = 7;
+// string s;
+// s += to_string(x)
+string brightness (size_t bin,size_t max_count)
+{
+    int pr;
+    string s="#";
+    if (max_count == 0) return "Error";
+    else {
+    pr=10 - (bin * 9) / max_count;
+
+    for(int i=0;i<3;i++)
+    {
+        if (pr > 9) pr = 9;
+      s += to_string(pr);
+    }
+   return s;
+}}
 
 void show_histogram_svg(const vector<size_t>& bins)
 {
@@ -46,6 +64,8 @@ void show_histogram_svg(const vector<size_t>& bins)
             max_count = count;
         }
     }
+
+
     const bool scaling_needed = (max_count * BLOCK_WIDTH) > MAX_ASTERISK;
     double scaling_factor;
     if (scaling_needed)
@@ -61,7 +81,9 @@ void show_histogram_svg(const vector<size_t>& bins)
     for (size_t bin : bins) {
         const double bin_width = BLOCK_WIDTH * bin*scaling_factor;
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
-        svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT,"black", "#c72af7");
+        string fill;
+        fill=brightness(bin,max_count);
+        svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT,"black", fill);
         top += BIN_HEIGHT;
     }
     svg_end();

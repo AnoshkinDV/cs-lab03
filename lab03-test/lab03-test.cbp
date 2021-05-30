@@ -37,7 +37,6 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="../cs-lab03/svg.h" />
-		<Unit filename="svg.cpp" />
 		<Unit filename="test.cpp" />
 		<Extensions>
 			<code_completion />

@@ -5,10 +5,10 @@
 	"histogram.h"
 	"svg.h"
 
-1621204057 c:\users\79022\desktop\lab03\laba03\cs-lab03\histogram.h
+1621247845 c:\users\79022\desktop\lab03\laba03\cs-lab03\histogram.h
 	<vector>
 
-1621203647 source:c:\users\79022\desktop\lab03\laba03\cs-lab03\histrogram.cpp
+1621266611 source:c:\users\79022\desktop\lab03\laba03\cs-lab03\histrogram.cpp
 	<iostream>
 	<vector>
 	"histogram.h"
@@ -18,12 +18,12 @@
 	<iostream>
 	"histogram.h"
 
-1621204237 c:\users\79022\desktop\lab03\laba03\cs-lab03\svg.h
+1621513779 c:\users\79022\desktop\lab03\laba03\cs-lab03\svg.h
 	<iostream>
 	<vector>
 	<string>
 
-1621204511 source:c:\users\79022\desktop\lab03\laba03\cs-lab03\svg.cpp
+1622417937 source:c:\users\79022\desktop\lab03\laba03\cs-lab03\svg.cpp
 	<iostream>
 	<string>
 	<vector>

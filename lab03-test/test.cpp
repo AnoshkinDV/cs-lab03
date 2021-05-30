@@ -1,8 +1,25 @@
 #include <cassert>
 #include <iostream>
 #include "C:\Users\79022\Desktop\lab03\LABA03\cs-lab03\histogram.h"
+#include "C:\Users\79022\Desktop\lab03\LABA03\cs-lab03\svg.h"
 
 using namespace std;
+
+string brightness (size_t bin,size_t max_count)
+{
+    int pr;
+    string s="#";
+    if (max_count == 0) return "Error";
+    else{
+    pr=10 - (bin * 9) / max_count;
+
+    for(int i=0;i<3;i++)
+    {
+      s += to_string(pr);
+    }
+   return s;
+}}
+
 
 void test_positive() {
     double min = 0;
@@ -40,7 +57,24 @@ void test_empty() {
     assert(max == 0);
 }
 
-int main() {
+
+void max_count() {
+size_t bin = 10;
+size_t max_count = bin;
+assert( brightness(bin, max_count) == "#111" );
+}
+
+void test_bin() {
+size_t bin = 0;
+size_t max_count = bin;
+assert( brightness(bin, max_count) == "Error" );
+}
+
+
+
+
+int main()
+{
 
     // Тесты для функции find_minmax
     test_positive();
@@ -48,5 +82,7 @@ int main() {
     test_constant();
     test_onenumber();
     test_empty();
+    test_bin();
+    max_count();
     return 0;
 }
