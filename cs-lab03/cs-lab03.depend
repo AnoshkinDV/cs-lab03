@@ -1,14 +1,15 @@
 # depslib dependency file v1.0
-1622462499 source:c:\users\79022\desktop\lab03\laba03\cs-lab03\main.cpp
+1622465155 source:c:\users\79022\desktop\lab03\laba03\cs-lab03\main.cpp
 	<iostream>
 	<vector>
 	"histogram.h"
 	"svg.h"
+	<curl/curl.h>
 
 1622462775 c:\users\79022\desktop\lab03\laba03\cs-lab03\histogram.h
 	<vector>
 
-1622462499 source:c:\users\79022\desktop\lab03\laba03\cs-lab03\histrogram.cpp
+1622462808 source:c:\users\79022\desktop\lab03\laba03\cs-lab03\histrogram.cpp
 	<iostream>
 	<vector>
 	"histogram.h"
@@ -28,4 +29,88 @@
 	<string>
 	<vector>
 	"svg.h"
+
+1621918820 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\curl-7.77.0-win64-mingw\include\curl\curl.h
+	"curlver.h"
+	"system.h"
+	<stdio.h>
+	<limits.h>
+	<osreldate.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<support/SupportDefs.h>
+	"easy.h"
+	"multi.h"
+	"urlapi.h"
+	"options.h"
+	"typecheck-gcc.h"
+
+1621999116 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\curl-7.77.0-win64-mingw\include\curl\curlver.h
+
+1618201874 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\curl-7.77.0-win64-mingw\include\curl\system.h
+	<winsock2.h>
+	<windows.h>
+	<ws2tcpip.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/poll.h>
+
+1618201874 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\curl-7.77.0-win64-mingw\include\curl\easy.h
+
+1618201874 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\curl-7.77.0-win64-mingw\include\curl\multi.h
+	"curl.h"
+
+1621855406 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\curl-7.77.0-win64-mingw\include\curl\urlapi.h
+	"curl.h"
+
+1618201874 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\curl-7.77.0-win64-mingw\include\curl\options.h
+
+1621918820 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\curl-7.77.0-win64-mingw\include\curl\typecheck-gcc.h
+
+1621918820 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\include\curl\curl.h
+	"curlver.h"
+	"system.h"
+	<stdio.h>
+	<limits.h>
+	<osreldate.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<support/SupportDefs.h>
+	"easy.h"
+	"multi.h"
+	"urlapi.h"
+	"options.h"
+	"typecheck-gcc.h"
+
+1621999116 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\include\curl\curlver.h
+
+1618201874 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\include\curl\system.h
+	<winsock2.h>
+	<windows.h>
+	<ws2tcpip.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/poll.h>
+
+1618201874 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\include\curl\easy.h
+
+1618201874 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\include\curl\multi.h
+	"curl.h"
+
+1621855406 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\include\curl\urlapi.h
+	"curl.h"
+
+1618201874 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\include\curl\options.h
+
+1621918820 c:\users\79022\desktop\lab03\laba03\cs-lab03\curl\include\curl\typecheck-gcc.h
 
