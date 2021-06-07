@@ -33,9 +33,7 @@
 		</Compiler>
 		<Unit filename="../cs-lab03/histogram.h" />
 		<Unit filename="../cs-lab03/histrogram.cpp" />
-		<Unit filename="../cs-lab03/svg.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="../cs-lab03/svg.cpp" />
 		<Unit filename="../cs-lab03/svg.h" />
 		<Unit filename="test.cpp" />
 		<Extensions>

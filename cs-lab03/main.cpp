@@ -35,10 +35,9 @@ download(const string& address)
         if(CURLE_OK == res)
         {
             res = curl_easy_getinfo(curl, CURLINFO_CONNECT_TIME, &connect);
-            if(CURLE_OK == res)
-            {
+
                 cerr <<"Connect: " << connect;
-            }
+
         }
         curl_easy_cleanup(curl);
 
