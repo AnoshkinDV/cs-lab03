@@ -2,13 +2,16 @@
 #include <vector>
 #include "histogram.h"
 using namespace std;
-const vector<double> input_numbers(istream& in, size_t count) {
+
+
+vector<double> input_numbers(istream& in, size_t count) {
     vector<double> result(count);
     for (size_t i = 0; i < count; i++) {
         cin >> result[i];
     }
     return result;
 }
+
 Input read_input(istream& in, bool prompt) {
     Input data;
 
@@ -25,7 +28,8 @@ Input read_input(istream& in, bool prompt) {
     return data;
 }
 
-void find_minmax(const vector<double>& numbers, double& max, double& min) {
+
+void find_minmax(const vector<double>& numbers, double& min, double& max) {
     if (numbers.size()) {
         max = numbers[0];
         min = numbers[0];
@@ -43,27 +47,24 @@ void find_minmax(const vector<double>& numbers, double& max, double& min) {
 }
 
 const vector<size_t> make_histogram(Input data) {
+ vector<size_t> bins(data.bin_count);
+    double min, max;
+    find_minmax(data.numbers, min, max);
 
-     const auto bin_count = data.bin_count;
-     const auto numbers = data.numbers;
-     double min, max;
-     size_t number_count = numbers.size();
-     find_minmax(numbers, min, max);
-     vector<size_t> bins(bin_count);
-     double bin_size = (max - min) / bin_count;
-        for (size_t i = 0; i < number_count; i++) {
-            bool found = false;
-            for (size_t j = 0; (j < bin_count - 1) && !found; j++) {
-                auto lo = min + j * bin_size;
-                auto hi = min + (j + 1) * bin_size;
-                if ((lo <= numbers[i]) && (numbers[i] < hi)) {
-                    bins[j]++;
-                    found = true;
-                }
-            }
-            if (!found) {
-                bins[bin_count - 1]++;
-            }
+    if (min == max) {
+        for (double number : data.numbers) {
+            bins[0]++;
         }
         return bins;
+    }
+    else {
+        for (double number : data.numbers) {
+            size_t bin = (size_t)((number - min) / (max - min) * data.bin_count);
+            if (bin == data.bin_count) {
+                bin--;
+            }
+            bins[bin]++;
+        }
+        return bins;
+    }
 }

@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
-#include "histogram.h"
 #include "svg.h"
+#include "histogram.h"
 #include <curl/curl.h>
+#include <string>
 #include <sstream>
+#include <Windows.h>
 
 using namespace std;
 size_t write_data(void* items, size_t item_size, size_t item_count, void* ctx) {
@@ -15,25 +17,38 @@ size_t write_data(void* items, size_t item_size, size_t item_count, void* ctx) {
 
 }
 
-Input download(const string& address) {
+Input
+download(const string& address)
+{
+
     stringstream buffer;
+    curl_global_init(CURL_GLOBAL_ALL);
+    CURL *curl = curl_easy_init();
+    if(curl)
+    {
+        CURLcode res;
+        double connect;
+        curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
+        res = curl_easy_perform(curl);
+        if(CURLE_OK == res)
+        {
+            res = curl_easy_getinfo(curl, CURLINFO_CONNECT_TIME, &connect);
+            if(CURLE_OK == res)
+            {
+                cerr <<"Connect: " << connect;
+            }
+        }
+        curl_easy_cleanup(curl);
 
-  CURL *curl = curl_easy_init();
-if(curl) {
-  CURLcode res;
-   curl_easy_setopt(curl, CURLOPT_URL,  address.c_str());
-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
-  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-  res = curl_easy_perform(curl);
-   if (res != CURLE_OK) {
-                cout << address<<endl;
-                cout << curl_easy_strerror(res);
-                exit(1);
-               }
-  curl_easy_cleanup(curl);
-}
-
-    return read_input(buffer, false);
+        if(res)
+        {
+            cout <<  curl_easy_strerror(res);
+            exit(1);
+        }
+    }
+        return read_input(buffer, false);
 }
 
 
