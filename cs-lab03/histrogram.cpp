@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "histogram.h"
+
 using namespace std;
 const vector<double> input_numbers(size_t count) {
     vector<double> result(count);

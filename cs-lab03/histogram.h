@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "svg.h"
 using namespace std;
 const vector<double> input_numbers(size_t count);
 const vector<size_t> make_histogram(const vector<double>& numbers, size_t& bin_count);

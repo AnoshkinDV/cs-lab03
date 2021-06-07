@@ -5,21 +5,6 @@
 
 using namespace std;
 
-string brightness (size_t bin,size_t max_count)
-{
-    int pr;
-    string s="#";
-    if (max_count == 0) return "Error";
-    else{
-    pr=10 - (bin * 9) / max_count;
-
-    for(int i=0;i<3;i++)
-    {
-      s += to_string(pr);
-    }
-   return s;
-}}
-
 
 void test_positive() {
     double min = 0;
