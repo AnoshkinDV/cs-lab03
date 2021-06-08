@@ -1,11 +1,12 @@
 #include <iostream>
 #include <vector>
-#include "svg.h"
-#include "histogram.h"
-#include <curl/curl.h>
 #include <string>
 #include <sstream>
+#include <cstring>
+#include <curl/curl.h>
 #include <Windows.h>
+#include "svg.h"
+#include "histogram.h"
 
 using namespace std;
 size_t write_data(void* items, size_t item_size, size_t item_count, void* ctx) {
@@ -50,20 +51,64 @@ download(const string& address)
         return read_input(buffer, false);
 }
 
+struct ConsoleArguments {
+    bool valid;
+    bool use_remote_file;
+    const char* remote_file_address;
+    bool use_svg_output;
+};
 
+ConsoleArguments parse_arguments(int argc, char* argv[]) {
+    ConsoleArguments res;
+    res.valid = false;
+    res.use_remote_file = false;
+    res.use_svg_output = true;
+    int i = 1;
+    while (i < argc) {
+        if (strcmp(argv[i], "-format") == 0) {
+            if ((i+1) < argc) {
+                if (strcmp(argv[i+1], "svg") == 0)
+                    res.use_svg_output = true;
+                else if (strcmp(argv[i+1], "txt") == 0)
+                    res.use_svg_output = false;
+                else return res;  // not valid
+            } else return res;  // not valid
+            i += 1;
+        } else {
+            res.use_remote_file = true;
+            res.remote_file_address = argv[i];
+        }
+        ++i;
+    }
+    res.valid = true;
+    return res;
+}
+
+void print_usage_message(const char* progname) {
+    cerr << "Usage: " << progname << " [-format {svg|txt}] [input URL]"
+         << endl;
+}
 
 int main(int argc, char* argv[]) {
 
+    ConsoleArguments args = parse_arguments(argc, argv);
+    if (!args.valid) {
+        print_usage_message(argv[0]);
+        return 0;
+    }
+
     Input input;
-    if (argc > 1) {
-        input = download(argv[1]);
+    if (args.use_remote_file) {
+        input = download(args.remote_file_address);
     } else {
         input = read_input(cin, true);
     }
 
-   const auto bins = make_histogram(input);
-   show_histogram_svg(bins);
-
+    const auto bins = make_histogram(input);
+    if (args.use_svg_output)
+        show_histogram_svg(bins);
+    else
+        show_histogram_text(bins);
 
     return 0;
 
