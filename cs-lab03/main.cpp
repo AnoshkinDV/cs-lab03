@@ -2,12 +2,16 @@
 #include <vector>
 #include "histogram.h"
 #include "svg.h"
+#include <windows.h>
 
 using namespace std;
 
 
 int main() {
-
+    DWORD WINAPI GetVersion(void);
+    printf("Windows (decimal) version is %u.\n", GetVersion());
+    printf("WINDOWS (16x) version is %x. \n",GetVersion());
+    return 0;
     size_t number_count;
     cerr << "Enter number count: ";
     cin >> number_count;
@@ -20,5 +24,8 @@ int main() {
 
     const auto bins = make_histogram(numbers, bin_count);
     show_histogram_svg(bins);
+    DWORD WINAPI GetVersion(void);
+    printf("Windows (decimal) version is %u.\n", GetVersion());
+    printf("WINDOWS (16x) version is %x. \n",GetVersion());
     return 0;
 }
