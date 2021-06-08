@@ -7,6 +7,7 @@
 #include <Windows.h>
 #include "svg.h"
 #include "histogram.h"
+#include <windows.h>
 
 using namespace std;
 size_t write_data(void* items, size_t item_size, size_t item_count, void* ctx) {

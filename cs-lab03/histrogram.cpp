@@ -3,7 +3,6 @@
 #include "histogram.h"
 using namespace std;
 
-
 vector<double> input_numbers(istream& in, size_t count) {
     vector<double> result(count);
     for (size_t i = 0; i < count; i++) {
@@ -27,7 +26,6 @@ Input read_input(istream& in, bool prompt) {
 
     return data;
 }
-
 
 void find_minmax(const vector<double>& numbers, double& min, double& max) {
     if (numbers.size()) {
