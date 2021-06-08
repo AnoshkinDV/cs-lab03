@@ -4,6 +4,30 @@
 #include <vector>
 #include "svg.h"
 using namespace std;
+string
+add_text_to()
+{
+    stringstream buffer;
+    DWORD info = GetVersion();
+    DWORD mask = 0x0000ffff;
+    DWORD version = info & mask;
+    DWORD platform = info >> 16;
+    DWORD mask_2 = 0x0000ff;
+   if ((info & 0x80000000) == 0)
+    {
+        DWORD version_major = version & mask_2;
+        DWORD version_minor = version >> 8;
+        DWORD build = platform;
+        buffer << "Windows v"<<version_major<<"."<<version_minor<<"(build"<<build<<")\n";
+
+    }
+    char computer_name[MAX_COMPUTERNAME_LENGTH + 1];
+    DWORD size = MAX_COMPUTERNAME_LENGTH+1;
+    GetComputerNameA(computer_name, &size);
+    buffer<<"Computer name:" <<computer_name;
+    return buffer.str();
+    return 0;
+}
 
 void svg_begin(double width, double height)
 {
@@ -86,6 +110,7 @@ void show_histogram_svg(const vector<size_t>& bins)
         svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT,"black", fill);
         top += BIN_HEIGHT;
     }
+    svg_text(TEXT_LEFT, top + TEXT_BASELINE,add_text_to());
     svg_end();
 
 }

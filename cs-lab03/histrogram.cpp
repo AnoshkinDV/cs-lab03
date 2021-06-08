@@ -10,7 +10,7 @@ const vector<double> input_numbers(size_t count) {
     return result;
 }
 
-void find_minmax(const vector<double>& numbers, double& max, double& min) {
+void find_minmax(const vector<double>& numbers, double& min, double& max) {
     if (numbers.size()) {
         max = numbers[0];
         min = numbers[0];
